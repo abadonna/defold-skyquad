@@ -1,0 +1,19 @@
+attribute mediump vec4 position;
+
+uniform mediump mat4 mtx_view;
+
+varying mediump vec3 var_ray;
+
+float far = 20.;
+float fovy = 0.7854;
+float aspect = 1.5;
+
+void main()
+{
+    vec2 tex = position.xy * 0.5 + 0.5;
+    float d = 0.5 / tan(fovy/2.0);
+    vec4 ray = vec4((tex.x - 0.5) * aspect, tex.y - 0.5, -d, 0);
+    var_ray = (mtx_view * ray).xyz;
+    gl_Position = position;
+    
+}
