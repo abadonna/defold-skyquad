@@ -19,7 +19,7 @@ function on_input(self, action_id, action)
 	if self.touch_down and action_id == nil then
 		self.ax = self.ax + action.dy * 0.01
 		self.ay = self.ay - action.dx * 0.01
-		local q = vmath.quat_rotation_x(self.ax) * vmath.quat_rotation_y(self.ay)
+		local q = vmath.quat_rotation_y(self.ay) * vmath.quat_rotation_x(self.ax)
 		go.set_rotation(q, "/camera")
 	end
 end
