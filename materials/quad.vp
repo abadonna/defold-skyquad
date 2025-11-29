@@ -1,11 +1,16 @@
-attribute mediump vec4 position;
-uniform mediump mat4 mtx_view;
-varying mediump vec3 var_ray;
+#version 140
+
+in vec4 position;
+out vec3 var_ray;
+
+uniform vs_uniforms
+{
+    uniform mediump mat4 mtx_view;
+};
 
 float fovy = 0.7854;
 float aspect = 1.5;
-
-#if __VERSION__ < 200
+/*
 mat4 transpose(mat4 m)
 {
     vec4 i0 = m[0];
@@ -21,8 +26,8 @@ mat4 transpose(mat4 m)
     );
 
     return res;
-}
-#endif
+}*/
+
 
 void main()
 {
